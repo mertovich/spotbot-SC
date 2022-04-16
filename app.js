@@ -17,4 +17,10 @@ app.post('/bot/token',urlencodedParser, function (req, res) {
   res.end()
 })
 
+app.get('/bot/start',urlencodedParser, function (req, res) {
+  const bot = require('./bot')
+  res.status(200)
+  res.end()
+})
+
 app.listen(3000)
