@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const fs = require('fs');
+const dataManager  = require('./dataManager');
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded()
 
@@ -19,6 +19,15 @@ app.post('/bot/token',urlencodedParser, function (req, res) {
 
 app.get('/bot/start',urlencodedParser, function (req, res) {
   const bot = require('./bot')
+  res.status(200)
+  res.end()
+})
+
+app.get('/bot/users',function(req,res){
+
+  var data = dataManager.Users;
+  var dataJSON = JSON.parse(data);
+  res.send(dataJSON);
   res.status(200)
   res.end()
 })
