@@ -6,6 +6,20 @@ const dataManager = require('./dataManager');
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     console.log(`${client.guilds.cache.size} guilds`);
+    
+    discordServers = client.guilds.cache.map(g => g.id)
+    discordServers.forEach(element => {
+        let serverID = element
+        const list = client.guilds.cache.get(serverID); 
+        const userList = list.members.cache.map(member => {
+            return {
+                id: member.user.id,
+                name: member.user.username,
+                image:`https://cdn.discordapp.com/avatars/${member.user.id}/${member.user.avatar}.png?size=256`
+            }
+        });
+        dataManager.createDB(userList);
+    });
 });
 
 client.on('message', async message => {
