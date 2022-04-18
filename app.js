@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const dataManager  = require('./dataManager');
+const fs = require('fs');
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded()
 
@@ -12,6 +13,18 @@ app.post('/bot/token',urlencodedParser, function (req, res) {
     if (err) throw err;
     console.log('Token saved!');
   });
+  
+  let bot = {
+    bot_name : req.body.Bot_Name,
+    bot_token : req.body.Bot_Token
+  }
+  let botJSON = JSON.stringify(bot)
+
+  fs.writeFile('bot.txt', `${botJSON}`, function (err) {
+    if (err) throw err;
+    console.log('bot file saved!');
+  });
+
   res.send('Token saved!')
   res.status(200)
   res.end()
