@@ -28,6 +28,7 @@ const BotTable = props => {
                                 <th>TOKEN</th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +38,7 @@ const BotTable = props => {
                                         <td>{ShowToken === true ? b.bot_token : '***************************************************************************'}</td>
                                         <td><Button onClick={() => showTokenButton()} variant="info">Show Token</Button></td>
                                         <td><Button variant="danger">Delete</Button></td>
+                                        <td><Button onClick={() => props.startBot()} variant="success">Start Bot</Button></td>
                                     </tr>
                                 ))}
                         </tbody>
