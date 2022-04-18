@@ -19,7 +19,7 @@ const BotTable = props => {
             <Container>
                 {props.BotInfo.length === 0
                     ? <Container>
-                        <Forms />
+                        <Forms handleChange={props.handleChange} handleSubmit={props.handleSubmit} />
                     </Container>
                     : <Table striped bordered hover size="sm">
                         <thead>
