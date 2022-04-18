@@ -30,5 +30,12 @@ function getUsers() {
     var data = fs.readFileSync('users.txt', 'utf-8');
     return data
 }
-
 exports.Users = getUsers();
+
+function getBotInfo() {
+  console.log("getBotInfo")
+  var data = fs.readFileSync('bot.txt', 'utf-8');
+  console.log(data)
+  return data
+}
+exports.botInfo = getBotInfo();
