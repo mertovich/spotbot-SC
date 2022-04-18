@@ -3,7 +3,7 @@ import BotTable from '../components/BotTable'
 
 export default class Bot extends Component {
   state = {
-    BotInfo: [{}],
+    BotInfo: [],
   }
 
   getBotInfo = () => {
