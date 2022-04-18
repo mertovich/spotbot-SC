@@ -6,6 +6,14 @@ const fs = require('fs');
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded()
 
+app.get('/bot', function (req, res) {
+  let data = dataManager.botInfo;
+  let botInfo = JSON.parse(data);
+  res.send(botInfo);
+  res.status(200);
+  res.end();
+})
+
 app.post('/bot/token',urlencodedParser, function (req, res) {
   console.log(req.body.Bot_Token)
   // write the token to the file
@@ -37,7 +45,6 @@ app.get('/bot/start',urlencodedParser, function (req, res) {
 })
 
 app.get('/bot/users',function(req,res){
-
   var data = dataManager.Users;
   var dataJSON = JSON.parse(data);
   res.send(dataJSON);
